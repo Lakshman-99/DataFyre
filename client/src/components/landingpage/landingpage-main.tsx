@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "antd/dist/reset.css";
 import "../../pages/landingpage/landingpage-main.css"; // Ensure styles remain consistent
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 export const Home = () => {

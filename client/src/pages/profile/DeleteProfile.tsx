@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Modal, Spin, Typography, notification, Card, Row, Col, Divider } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteUserProfile, selectUserLoading, selectUserError } from '../../redux/userSlice';
+// import { deleteUserProfile, selectUserLoading, selectUserError } from '../../redux/userSlice';
+import { selectUserLoading } from '../../redux/userSlice';
 import { useTranslation } from 'react-i18next';
 import './DeleteProfile.css';
 
-const { Title, Text, Paragraph } = Typography;
+const { Title, Text } = Typography;
 const { confirm } = Modal;
 
 const DeleteProfile = () => {
     const { t } = useTranslation();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const navigate = useNavigate();
     const loading = useSelector(selectUserLoading);
-    const error = useSelector(selectUserError);
+    // const error = useSelector(selectUserError);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleDelete = () => {
@@ -40,31 +42,31 @@ const DeleteProfile = () => {
             cancelText: t('delete_profile.cancel_button'),
             onOk: async () => {
                 setIsLoading(true);
-                try {
-                    const result = await dispatch(deleteUserProfile());
-                    if (result.meta.requestStatus === 'fulfilled') {
-                        notification.success({
-                            message: t('delete_profile.success_message'),
-                            description: t('delete_profile.success_description'),
-                            placement: 'topRight',
-                        });
-                        navigate('/');
-                    } else {
-                        notification.error({
-                            message: t('delete_profile.error_message'),
-                            description: error,
-                            placement: 'topRight',
-                        });
-                    }
-                } catch (e) {
-                    notification.error({
-                        message: t('delete_profile.error_message'),
-                        description: t('delete_profile.error_details'),
-                        placement: 'topRight',
-                    });
-                } finally {
-                    setIsLoading(false);
-                }
+                // try {
+                //     const result = dispatch(deleteUserProfile());
+                //     if (result.meta.requestStatus === 'fulfilled') {
+                //         notification.success({
+                //             message: t('delete_profile.success_message'),
+                //             description: t('delete_profile.success_description'),
+                //             placement: 'topRight',
+                //         });
+                //         navigate('/');
+                //     } else {
+                //         notification.error({
+                //             message: t('delete_profile.error_message'),
+                //             description: error,
+                //             placement: 'topRight',
+                //         });
+                //     }
+                // } catch (e) {
+                //     notification.error({
+                //         message: t('delete_profile.error_message'),
+                //         description: t('delete_profile.error_details'),
+                //         placement: 'topRight',
+                //     });
+                // } finally {
+                //     setIsLoading(false);
+                // }
             },
             onCancel: () => {
                 notification.info({

@@ -1,4 +1,4 @@
-import { Layout, Typography, Row, Col, Button } from "antd";
+import { Layout, Typography, Row, Col } from "antd";
 import "antd/dist/reset.css";
 import "./landingpage-header";
 

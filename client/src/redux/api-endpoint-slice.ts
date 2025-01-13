@@ -10,7 +10,7 @@ export const apiEndpointSlice = createSlice({
     name: 'api-endpoint',
     initialState,
     reducers: {
-        loadApiEndpoints: (state: ApiEndpointState, action: PayloadAction<ApiEndpointState>) => {
+        loadApiEndpoints: (_state: ApiEndpointState, action: PayloadAction<ApiEndpointState>) => {
             return [...action.payload];
         },
         addApiEndpoint: (state: ApiEndpointState, action: PayloadAction<APIEndpoints>) => {

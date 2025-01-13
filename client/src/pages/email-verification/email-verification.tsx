@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Result, Button } from "antd";
 import axios_base from "../../services/axios.ts";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import {useDispatch} from "react-redux";
 import "./email-verification.css"
 
 const EmailVerify = () => {
-    const [status, setStatus] = useState(null); // To store the API response status
+    const [status, setStatus] = useState<string | null>(null); // To store the API response status
     const [loading, setLoading] = useState(true); // To track loading state
     const navigate = useNavigate(); // React Router hook for navigation
     const dispatch = useDispatch();

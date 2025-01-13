@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
-import { Form, Input, Button, DatePicker, Select, notification, Checkbox } from 'antd';
+import { Form, Input, Button, Select, notification, Checkbox } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';  // Import useTranslation hook
-import { loadBillingInfo, addBillingInfo, updateBillingInfo, deleteBillingInfo } from '../../redux/billinginfo-slice'; // Import the actions
-import { selectBillingInfo } from '../../redux/billinginfo-slice'; // Import the selector
+import { addBillingInfo, updateBillingInfo } from '../../redux/billinginfo-slice'; // Import the actions
 import { AppState } from '../../redux/store';
 import dayjs from 'dayjs';
 import { BillingInfo } from '../../models/billinginfo';
 import { updateBillingInfoById, createBillingInfo, getBillingInfo } from '../../services/billinginfo-service';
-import { setLanguage } from "../../redux/language-slice";
 
 // Ant Design Form Layout
 const { Option } = Select;
@@ -18,10 +16,6 @@ const BillingInfoForm: React.FC<{ billingInfoId?: string }> = ({ billingInfoId }
   const dispatch = useDispatch();
   const billingInfoList = useSelector((state: AppState) => state.billinginfo);
   const language = useSelector((state: AppState) => state.language.language);
-
-  const changeLanguage = (lang: string) => {
-    dispatch(setLanguage(lang));
-  };
 
   useEffect(() => {
     // Change language only if it's different from the current language

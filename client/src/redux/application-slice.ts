@@ -10,7 +10,7 @@ export const applicationSlice = createSlice({
     name: 'application',
     initialState,
     reducers: {
-        loadApplications: (state: ApplicationState, action: PayloadAction<ApplicationState>) => {
+        loadApplications: (_state: ApplicationState, action: PayloadAction<ApplicationState>) => {
             return [...action.payload];
         },
         addApplication: (state: ApplicationState, action: PayloadAction<Application>) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
     Form,
     Input,
@@ -18,12 +18,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
-    fetchUserProfile,
-    updateUserProfile,
     selectUserProfile,
     selectUserLoading,
     selectUserUpdateSuccess,
-    selectUserError,
     clearUpdateSuccess,
 } from "../../redux/userSlice";
 import "./EditProfile.css";
@@ -37,24 +34,14 @@ const EditProfile = () => {
     const profile = useSelector(selectUserProfile);
     const isLoading = useSelector(selectUserLoading);
     const updateSuccess = useSelector(selectUserUpdateSuccess);
-    const error = useSelector(selectUserError);
 
     const [form] = Form.useForm();
-    const [subordinates, setSubordinates] = useState([]);
     const [userRole, setUserRole] = useState("");
-
-    useEffect(() => {
-        dispatch(fetchUserProfile());
-    }, [dispatch]);
 
     useEffect(() => {
         if (profile) {
             form.setFieldsValue(profile);
             setUserRole(profile.role);
-
-            if (profile.role === "manager" || profile.role === "admin") {
-                fetchSubordinates();
-            }
         }
     }, [profile, form]);
 
@@ -64,11 +51,11 @@ const EditProfile = () => {
             dispatch(clearUpdateSuccess());
             navigate("/profile/view"); // Navigate to the view profile page
         }
-    }, [updateSuccess, dispatch, navigate]); // Add navigate as a dependency
+    }, [updateSuccess, dispatch, navigate, t]); // Add navigate as a dependency
 
 
 
-    const validateFileType = (file) => {
+    const validateFileType = (file: File) => {
         const isImage = file.type.startsWith("image/");
         if (!isImage) {
             message.error(t("edit_profile.invalid_file_error"));
@@ -76,7 +63,7 @@ const EditProfile = () => {
         return isImage;
     };
 
-    const onFinish = (values) => {
+    const onFinish = (values: any) => {
         const formData = new FormData();
         Object.keys(values).forEach((key) => {
             if (key === "profilePictureUrl" || key === "coverPictureUrl") {
@@ -88,7 +75,6 @@ const EditProfile = () => {
             }
         });
 
-        dispatch(updateUserProfile(formData));
     };
 
     return (
@@ -196,11 +182,6 @@ const EditProfile = () => {
                                     placeholder={t("edit_profile.select_subordinates_placeholder")}
                                     style={{ width: "100%" }}
                                 >
-                                    {subordinates.map((user) => (
-                                        <Select.Option key={user._id} value={user._id}>
-                                            {`${user.first_name} ${user.last_name} (${user.email})`}
-                                        </Select.Option>
-                                    ))}
                                 </Select>
                             </Form.Item>
                         </>

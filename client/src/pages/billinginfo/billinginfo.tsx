@@ -10,13 +10,12 @@ import {
   Modal,
   notification,
 } from "antd";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { PlusOutlined, ExclamationOutlined } from "@ant-design/icons";
 import mastercard from "../../assets/images/mastercard-logo.png";
 import paypal from "../../assets/images/paypal-logo-2.png";
 import paypallogo3 from "../../assets/images/paypal-logo-3.jpg"
 import visa from "../../assets/images/visa-logo.png";
-import { setLanguage } from "../../redux/language-slice";
 import BillingInfoForm from "./billininfo-form";
 import "./billinginfo.css"
 import { useDispatch, useSelector } from 'react-redux';
@@ -40,10 +39,6 @@ function billingInfo() {
 
   const language = useSelector((state: AppState) => state.language.language);
   const [invoiceData, setInvoiceData] = useState<Invoice[]>([]);
-
-  const changeLanguage = (lang: string) => {
-    dispatch(setLanguage(lang));
-  };
 
 
   useEffect(() => {
@@ -245,23 +240,6 @@ function billingInfo() {
       ></path>
     </svg>,
   ];
-  const download = [
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      key="0"
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M3 17C3 16.4477 3.44772 16 4 16H16C16.5523 16 17 16.4477 17 17C17 17.5523 16.5523 18 16 18H4C3.44772 18 3 17.5523 3 17ZM6.29289 9.29289C6.68342 8.90237 7.31658 8.90237 7.70711 9.29289L9 10.5858L9 3C9 2.44772 9.44771 2 10 2C10.5523 2 11 2.44771 11 3L11 10.5858L12.2929 9.29289C12.6834 8.90237 13.3166 8.90237 13.7071 9.29289C14.0976 9.68342 14.0976 10.3166 13.7071 10.7071L10.7071 13.7071C10.5196 13.8946 10.2652 14 10 14C9.73478 14 9.48043 13.8946 9.29289 13.7071L6.29289 10.7071C5.90237 10.3166 5.90237 9.68342 6.29289 9.29289Z"
-        fill="#111827"
-      ></path>
-    </svg>,
-  ];
   const deletebtn = [
     <svg
       width="16"
@@ -321,33 +299,6 @@ function billingInfo() {
     }
   }
 
-
-
-  const handleSnackbar = (message: string) => {
-    notification.info({
-      message: message,
-      duration: 3,
-    });
-  };
-
-  const calender = [
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      key={0}
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M6 2C5.44772 2 5 2.44772 5 3V4H4C2.89543 4 2 4.89543 2 6V16C2 17.1046 2.89543 18 4 18H16C17.1046 18 18 17.1046 18 16V6C18 4.89543 17.1046 4 16 4H15V3C15 2.44772 14.5523 2 14 2C13.4477 2 13 2.44772 13 3V4H7V3C7 2.44772 6.55228 2 6 2ZM6 7C5.44772 7 5 7.44772 5 8C5 8.55228 5.44772 9 6 9H14C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7H6Z"
-        fill="#111827"
-        className="fill-muted"
-      ></path>
-    </svg>,
-  ];
   const mins = [
     <svg
       width="10"

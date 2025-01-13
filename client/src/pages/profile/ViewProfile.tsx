@@ -1,23 +1,17 @@
-import React, { useEffect } from 'react';
 import { Avatar, Descriptions, List, Spin, Typography, Card, Row, Col, Tag, Empty } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { fetchUserProfile, selectUserProfile, selectUserLoading, selectUserError } from '../../redux/userSlice';
+import { selectUserProfile, selectUserLoading, selectUserError } from '../../redux/userSlice';
 import './ViewProfile.css';
 
 const { Title, Text } = Typography;
 
 const ViewProfile = () => {
     const { t } = useTranslation();
-    const dispatch = useDispatch();
     const userProfile = useSelector(selectUserProfile);
     const loading = useSelector(selectUserLoading);
     const error = useSelector(selectUserError);
-
-    useEffect(() => {
-        dispatch(fetchUserProfile());
-    }, [dispatch]);
 
     if (loading) {
         return (

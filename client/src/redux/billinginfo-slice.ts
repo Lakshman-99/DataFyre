@@ -11,7 +11,7 @@ const billingSlice = createSlice({
     name: 'billing',
     initialState,
     reducers: {
-        loadBillingInfo: (state: BillingInfoState, action: PayloadAction<BillingInfoState>) => {
+        loadBillingInfo: (_state: BillingInfoState, action: PayloadAction<BillingInfoState>) => {
             return [...action.payload];
         },
         addBillingInfo: (state: BillingInfoState, action: PayloadAction<BillingInfo>) => {
