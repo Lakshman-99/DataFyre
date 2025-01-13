@@ -1,0 +1,133 @@
+.landing-page {
+    background-color: #fff;
+}
+
+.homeInfo {
+    height: 800px;
+    width: 1425px;
+    padding: 30px;
+    margin: 10px;
+    top: 30px;
+    position: relative;
+}
+
+.home-bg-img {
+    width: 1325px;
+    position: relative;
+    height: 628px;
+    top: 15px;
+    left: 38px;
+}
+.paragraph-aboutUs{
+    text-align: justify;
+}
+
+.box {
+    background-color: #d8e4e6d1;
+    z-index: 2;
+    position: relative;
+    top:-300px;
+    left: 457px;
+    width: 474px;
+    height: 370px;
+    padding: 20px;
+    color: black;
+    border-radius: 10px;
+}
+
+.loginbutton{
+    background-color:royalblue;
+    color: aliceblue;
+    justify-self: stretch;
+}
+
+/* Align center class is added in the center alignment required places*/
+.align-center {
+    display :grid;
+    justify-content: center;
+}
+
+.aboutus-landingpage {
+    display: flex;
+    flex-direction: row;
+    top: 15px;
+    position: relative;
+    height: 500px;
+}
+
+.aboutUs-info{
+    width: 600px;
+    align-content: center;
+    padding: 70px;
+    margin: 20px;
+}
+
+.login-info{
+    justify-content: center;
+    display: flex;
+    padding-top: 10px;
+}
+.aboutUs-info-rightpane{
+    width: 600px;
+    align-content: center;
+    padding: 70px;
+    margin: 20px;
+    padding-left: 170px;
+}
+
+.aboutus-image{
+    width: 600px;
+    height : 350px;
+}
+
+.features-flex{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 4rem;
+    padding: 40px;
+    margin: 36px;
+    top: -45px;
+    justify-content: center;
+}
+
+.article-box-features{
+    padding : 30px;
+    margin : 20px;
+    background-color: azure;
+    color: black;
+    height: 285px;
+    width: 355px;
+}
+
+.features {
+    padding-top: 10px;
+    position: relative;
+    top: 50px;
+    color: azure;
+    height: 900px;
+}
+
+.learn-more{
+    color: currentcolor;
+    background-color: lightslategrey;
+}
+.article-aboutUs{
+    text-align: justify;
+    width: 500px;
+}
+
+.font-style{
+    font-family: serif;
+}
+
+.aboutus-leftpane{
+    align-content: center;
+    padding: 70px;
+    padding-left: 100px;
+}
+
+.aboutus-rightpane{
+    align-content: center;
+}

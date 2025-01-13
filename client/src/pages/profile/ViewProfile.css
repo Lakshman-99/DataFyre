@@ -1,0 +1,100 @@
+/* src/pages/Profile/ViewProfile.css */
+
+.view-profile-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section {
+    position: relative;
+    margin-bottom: 200px; /* Increased to accommodate avatar overlap */
+}
+
+.cover-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.default-cover {
+    width: 100%;
+    height: 300px;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.avatar-container {
+    position: absolute;
+    bottom: -153px; /* Set to half of the avatar size (assuming avatar size is 306px) */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Ensures avatar is on top */
+}
+
+.profile-avatar {
+    border: 4px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    width: 306px; /* Updated to match the bottom offset */
+    height: 306px; /* Updated to match the bottom offset */
+}
+
+.user-name {
+    margin-top: 20px; /* Increased spacing for larger avatar */
+    font-weight: 600;
+}
+
+.user-role {
+    margin-top: 10px; /* Increased spacing for larger avatar */
+}
+
+.edit-button {
+    margin-top: 20px; /* Increased spacing for larger avatar */
+}
+
+.subordinates-card {
+    background-color: #fff;
+}
+
+.spinner-container,
+.error-message,
+.no-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+@media (max-width: 768px) {
+    .avatar-container {
+        bottom: -76.5px; /* Half of the updated avatar size (306px / 2) */
+    }
+
+    .profile-avatar {
+        width: 150px !important; /* Adjusted for smaller screens */
+        height: 150px !important; /* Adjusted for smaller screens */
+    }
+
+    .user-name {
+        font-size: 20px;
+    }
+
+    .user-role {
+        font-size: 14px;
+    }
+
+    .hero-section {
+        margin-bottom: 170px; /* Adjusted for smaller screens */
+    }
+}

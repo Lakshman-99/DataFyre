@@ -1,0 +1,22 @@
+meta {
+  name: Create User
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/v1/users
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "slakshman664@gmail.com",
+    "first_name": "Lakshman",
+    "last_name": "Siva",
+    "role": "user",
+    "user_type": "free",
+    "hashed_password": "securepassword123"
+  }
+}

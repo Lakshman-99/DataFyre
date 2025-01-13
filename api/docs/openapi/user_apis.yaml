@@ -1,0 +1,220 @@
+openapi: 3.1.0
+info:
+  title: User API
+  summary: CRUD API for managing User resources
+  version: '1.0'
+servers:
+  - url: http://localhost:9000/datafyre/v1/
+    description: Local development environment
+
+paths:
+  /users:
+    get:
+      operationId: get-users
+      description: Retrieve a list of all users.
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        500:
+          description : Internal Server Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+    post:
+      operationId: create-users
+      description: Add a new user to the system.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        201:
+          description: User created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid Data
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+        401:
+          description: Authentication Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+        500:
+          description : Internal Server Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+  /users/{id}:
+    get:
+      operationId: get-user
+      description: Retrieve a user by their unique ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: User retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid Data
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+        401:
+          description: Authentication Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+        404:
+          description: User not found.
+        500:
+          description : Internal Server Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+    put:
+      summary: Update a user by ID
+      description: Update an existing user's information.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        200:
+          description: User updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid Data
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+        401:
+          description: Authentication Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+        404:
+          description: User not found.
+        500:
+          description : Internal Server Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+    delete:
+      summary: Delete a user by ID
+      description: Remove a user from the system.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: User deleted successfully.
+        400:
+          description: Invalid Data
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+        401:
+          description: Authentication Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+        404:
+          description: User not found.
+        500:
+          description : Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the user
+          examples: [1]
+        email:
+          type: string
+          description: User's email address
+          examples: ["user@example.com"]
+        first_name:
+          type: string
+          description: User's first name
+          examples: ["John"]
+        last_name:
+          type: string
+          description: User's last name
+          examples: ["Doe"]
+        role:
+          type: string
+          description: Role of the user in the system
+          examples: ["{id}"]
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string

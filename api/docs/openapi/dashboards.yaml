@@ -1,0 +1,199 @@
+openapi : 3.1.0
+info:
+  title: Datafyre Dashboard API
+  summary: REST APIs for showing Dashboard page with all the insights
+  version : '1.0'
+servers:
+  - url: http://localhost:9000/datafyre/v1/
+    description: Local development environment
+paths:
+  /Insights:
+    get:
+      operationId : get-insights
+      description : API for getting the insights for Dashboard Page
+      responses :
+        200:
+          description : Success
+          content: 
+            "application/json":
+              schema:
+                type: "array"
+                items:
+                  $ref: "/#/components/schemas/Insight"
+        500:
+          description : Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+  /UniqueVisitors:
+    get:
+      operationId : get-uniquevistors
+      description : API for getting the UniqueVisitors for Dashboard Page
+      parameters:
+        - name : type
+          in: query
+          required: false
+          schema:
+            type: string
+      responses :
+        200:
+          description : Success
+          content: 
+            "application/json":
+              schema:
+                type: "array"
+                items:
+                  $ref: "/#/components/schemas/UniqueVisits"
+        400:
+          description: Invalid Data
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+        500:
+          description : Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+  /IncomeOverview:
+    get:
+      operationId : get-incomeoverview
+      description : API for getting the Income Overview for Dashboard Page
+      parameters:
+        - name : type
+          in: query
+          required: false
+          schema:
+            type: string
+      responses :
+        200:
+          description : Success
+          content: 
+            "application/json":
+              schema:
+                type: "array"
+                items:
+                  $ref: "/#/components/schemas/IncomeOveriew"
+        400:
+          description: Invalid Data
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+        500:
+          description : Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+  /RecentOrders:
+    get:
+      operationId : get-recentorders
+      description : API for getting the Recent Orders for Dashboard Page
+      responses :
+        200:
+          description : Success
+          content: 
+            "application/json":
+              schema:
+                type: "array"
+                items:
+                  $ref: "/#/components/schemas/RecentOrders"
+        500:
+          description : Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+  /TransactionHistory:
+    get:
+      operationId : get-transactionHistory
+      description : API for getting the Transaction History for Dashboard Page
+      responses :
+        200:
+          description : Success
+          content: 
+            "application/json":
+              schema:
+                type: "array"
+                items:
+                  $ref: "/#/components/schemas/TransactionHistory"
+        500:
+          description : Error
+          content:
+            "application/json":
+              schema:
+                type: object
+                $ref: "/#/components/schemas/Error"
+components:
+  schemas:
+    Insight:
+      type: object
+      properties:
+        id:
+          type: string
+        totalPageViews:
+          type: string
+        totalUsers:
+          type: integer
+        totalOrders:
+          type: integer
+        totalSales:
+          type: integer
+    UniqueVisits:
+      type: object
+      properties:
+        visit_id:
+          type: string
+        days:
+          type: object
+          properties:
+            day:
+              type: string
+    IncomeOveriew:
+      type: object
+      properties:
+        income_id:
+          type: string
+        days:
+          type: object
+          properties:
+            day:
+              type: string
+        totalIncome:
+          type: integer
+    RecentOrders:
+      type: object
+      properties:
+        order_id:
+          type: string
+        product_name:
+          type: string
+        total_order:
+          type: integer
+        status:
+          type: integer
+        total_amount:
+          type: integer
+    TransactionHistory:
+      type: object
+      properties:
+        order_id:
+          type: string
+        order_amount:
+          type: integer
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string

@@ -1,0 +1,471 @@
+openapi: 3.0.1
+info:
+  title: Application and API Endpoints API
+  description: API for managing Applications and their associated API Endpoints.
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+
+paths:
+  /applications:
+    get:
+      summary: Get all applications
+      description: Retrieves a list of all applications.
+      operationId: getApplications
+      tags:
+        - Applications
+      responses:
+        '200':
+          description: A list of applications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Application'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    post:
+      summary: Create a new application
+      description: Adds a new application to the system.
+      operationId: createApplication
+      tags:
+        - Applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Application'
+      responses:
+        '201':
+          description: Application created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '400':
+          description: Bad Request, invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /applications/{applicationId}:
+    get:
+      summary: Get an application by ID
+      description: Retrieves a specific application based on its ID.
+      operationId: getApplicationById
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: ID of the application to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The application details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '404':
+          description: Application not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    put:
+      summary: Update an existing application
+      description: Updates the details of an existing application.
+      operationId: updateApplication
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: ID of the application to update
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Application'
+      responses:
+        '200':
+          description: Application updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '400':
+          description: Invalid data provided
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Application not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    delete:
+      summary: Delete an application
+      description: Deletes a specific application from the system.
+      operationId: deleteApplication
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: ID of the application to delete
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Application deleted successfully
+        '404':
+          description: Application not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /applications/{applicationId}/api-endpoints:
+    get:
+      summary: Get all API endpoints for an application
+      description: Retrieves a list of all API endpoints associated with a specific application.
+      operationId: getApiEndpoints
+      tags:
+        - API Endpoints
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: ID of the application to retrieve API endpoints for
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of API endpoints
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/APIEndpoints'
+        '404':
+          description: Application not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    post:
+      summary: Create a new API endpoint for an application
+      description: Adds a new API endpoint to a specific application.
+      operationId: createApiEndpoint
+      tags:
+        - API Endpoints
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: ID of the application to create the API endpoint for
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIEndpoints'
+      responses:
+        '201':
+          description: API endpoint created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEndpoints'
+        '400':
+          description: Bad Request, invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api-endpoints/{endpointId}:
+    get:
+      summary: Get an API endpoint by ID
+      description: Retrieves a specific API endpoint by its ID.
+      operationId: getApiEndpointById
+      tags:
+        - API Endpoints
+      parameters:
+        - name: endpointId
+          in: path
+          required: true
+          description: ID of the API endpoint to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The API endpoint details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEndpoints'
+        '404':
+          description: API endpoint not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    put:
+      summary: Update an existing API endpoint
+      description: Updates the details of an existing API endpoint.
+      operationId: updateApiEndpoint
+      tags:
+        - API Endpoints
+      parameters:
+        - name: endpointId
+          in: path
+          required: true
+          description: ID of the API endpoint to update
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIEndpoints'
+      responses:
+        '200':
+          description: API endpoint updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEndpoints'
+        '400':
+          description: Invalid data provided
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: API endpoint not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    delete:
+      summary: Delete an API endpoint
+      description: Deletes a specific API endpoint by its ID.
+      operationId: deleteApiEndpoint
+      tags:
+        - API Endpoints
+      parameters:
+        - name: endpointId
+          in: path
+          required: true
+          description: ID of the API endpoint to delete
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: API endpoint deleted successfully
+        '404':
+          description: API endpoint not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    Application:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier of the application
+        name:
+          type: string
+          description: The name of the application
+        description:
+          type: string
+          description: A short description of the application
+        icon_url:
+          type: string
+          description: URL to the application's icon
+        api_endpoint_url:
+          type: string
+          description: The URL to the API endpoint of the application
+        api_key:
+          type: string
+          description: The API key for the application
+        environment:
+          type: string
+          description: The environment in which the application is running (e.g., production, development)
+        type:
+          type: string
+          description: The type of application (e.g., web, mobile)
+        entity_count:
+          type: integer
+          description: The number of entities associated with the application
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp of when the application was created
+        last_updated_at:
+          type: string
+          format: date-time
+          description: Timestamp of the last update to the application
+        created_by:
+          type: string
+          description: The user who created the application
+        last_updated_by:
+          type: string
+          description: The user who last updated the application
+        collaborations:
+          type: array
+          items:
+            type: string
+          description: List of collaborators for the application
+        users:
+          type: array
+          items:
+            type: string
+          description: List of users associated with the application
+
+    APIEndpoints:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier of the API endpoint
+        application_id:
+          type: integer
+          description: The ID of the application this API endpoint belongs to
+        route:
+          type: string
+          description: The route of the API endpoint
+        method:
+          type: string
+          description: The HTTP method (e.g., GET, POST, PUT, DELETE)
+        input_data:
+          type: string
+          description: The expected input data for the API endpoint
+        headers:
+          type: string
+          description: The headers to be sent with the API request
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp of when the API endpoint was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp of the last update to the API endpoint
+        created_by:
+          type: string
+          description: The user who created the API endpoint
+        updated_by:
+          type: string
+          description: The user who last updated the API endpoint
+        description:
+          type: string
+          description: A description of what the API endpoint does
+        auth_type:
+          type: string
+          description: The type of authentication required for the API (e.g., None, API Key, OAuth)
+
+    ErrorResponse:
+      type: object
+      properties:
+        error_code:
+          type: integer
+          description: The error code (e.g., 400, 500)
+        message:
+          type: string
+          description: A description of the error
+        details:
+          type: string
+          description: Additional information or details about the error (optional)
+        timestamp:
+          type: string
+          format: date-time
+          description: The timestamp when the error occurred

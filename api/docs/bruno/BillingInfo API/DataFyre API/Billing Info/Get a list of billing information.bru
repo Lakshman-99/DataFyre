@@ -1,0 +1,15 @@
+meta {
+  name: Get a list of billing information
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:3000/api/v1/billing-info
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzNjNDQ3MGRmNTRmNWQ3YTkwNGQ0MDciLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzIwNTMzNzEsImV4cCI6MTczMjA1Njk3MX0.DoNAWe4bd9RZaF6eN4cgkwljHn4GurYrp2t9MASxEwM
+}

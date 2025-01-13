@@ -1,0 +1,34 @@
+meta {
+  name: Create Application
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/v1/applications
+  body: json
+  auth: none
+}
+
+headers {
+  authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDEwZTE2N2U0NTRhMDRjNmRmMzZmMSIsImZpcnN0X25hbWUiOiJMYWtzaG1hbiIsImVtYWlsIjoic2xha3NobWFuNjY0QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaXNfdmVyaWZpZWQiOnRydWUsImlhdCI6MTczMzA4NzM5MiwiZXhwIjoxNzMzMTczNzkyfQ.L-3qaiFq_p14q5d0dLyQfdEKQCv-pXmDJT68EVlXB3k
+}
+
+body:json {
+  {
+    "name": "ServiceDesk Plus On-Premise",
+    "description": "An ITIL ready service desk application that enables organizations to manage incidents, requests, changes, and assets effectively.",
+    "icon_url": "https://www.manageengine.com/products/service-desk/images/sdp-logo.png",
+    "api_endpoint_url": "https://demo.servicedeskplus.com/",
+    "api_key": "your-servicedesk-plus-api-key",
+    "environment": "production",
+    "type": "private",
+    "collaborations": [
+      {
+        "email": "slakshman664@gmail.com",
+        "role": ["view", "add", "update", "delete"]
+      }
+    ]
+  }
+  
+}

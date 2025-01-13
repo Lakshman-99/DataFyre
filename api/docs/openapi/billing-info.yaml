@@ -1,0 +1,266 @@
+openapi: 3.0.0
+info:
+  title: DataFyre API
+  description: API for managing billing information within the DataFyre system
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/api/v1
+    description: local development environment
+
+paths:
+  /billing-info:
+    get:
+      summary: Get a list of billing information
+      tags:
+        - Billing Info
+      responses:
+        '200':
+          description: A list of billing information records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BillingInfo'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      summary: Create a new billing info record
+      tags:
+        - Billing Info
+      requestBody:
+        description: Billing information to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingInfo'
+      responses:
+        '201':
+          description: Billing information created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingInfo'
+        '400':
+          description: Bad request due to invalid data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /billing-info/{id}:
+    get:
+      summary: Get a specific billing information by ID
+      tags:
+        - Billing Info
+      parameters:
+        - name: id
+          in: path
+          description: ID of the billing info
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A specific billing information record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingInfo'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Billing info not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      summary: Update a specific billing information by ID
+      tags:
+        - Billing Info
+      parameters:
+        - name: id
+          in: path
+          description: ID of the billing info to update
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Updated billing information
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingInfo'
+      responses:
+        '200':
+          description: Billing information updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingInfo'
+        '400':
+          description: Invalid data provided for update
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Billing info not found for the provided ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      summary: Delete a specific billing information by ID
+      tags:
+        - Billing Info
+      parameters:
+        - name: id
+          in: path
+          description: ID of the billing info to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Billing information deleted successfully
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Billing info not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    BillingInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier for the billing information
+        user_id:
+          type: integer
+          description: The user associated with this billing information
+        payment_method:
+          type: string
+          description: The payment method (e.g., 'credit_card', 'paypal')
+        card_last_four:
+          type: string
+          description: Last four digits of the credit card (if applicable)
+        billing_address:
+          type: string
+          description: The billing address associated with the payment method
+        subscription_id:
+          type: integer
+          description: The ID of the associated subscription
+        subscription_start_date:
+          type: string
+          format: date-time
+          description: The start date of the subscription
+        subscription_end_date:
+          type: string
+          format: date-time
+          description: The end date of the subscription
+        amount:
+          type: number
+          format: float
+          description: The amount charged for the subscription or service
+        currency:
+          type: string
+          description: The currency code (e.g., 'USD', 'EUR')
+        payment_status:
+          type: string
+          description: The status of the payment (e.g., 'paid', 'pending')
+        payment_method_token:
+          type: string
+          description: A token representing the payment method (if available)
+        transaction_history:
+          type: string
+          description: A string containing the transaction history (could be a JSON or plain text)
+        last_billed_at:
+          type: string
+          format: date-time
+          description: The date when the user was last billed
+        created_at:
+          type: string
+          format: date-time
+          description: The date when the billing information was created
+        updated_at:
+          type: string
+          format: date-time
+          description: The date when the billing information was last updated
+
+      required:
+        - user_id
+        - payment_method
+        - amount
+        - currency
+        - payment_status
+        - created_at
+        - updated_at
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: A machine-readable error code
+        message:
+          type: string
+          description: A human-readable error message
+        details:
+          type: string
+          description: Optional additional details about the error (can be empty or null)
+      required:
+        - code
+        - message

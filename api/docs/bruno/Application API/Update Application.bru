@@ -1,0 +1,34 @@
+meta {
+  name: Update Application
+  type: http
+  seq: 6
+}
+
+put {
+  url: http://localhost:3000/api/v1/applications/674044047fd750a15c91ae83
+  body: json
+  auth: none
+}
+
+headers {
+  authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2QxYWYwNTNjMGFmOWZkYWQ4ZGY2MyIsImZpcnN0X25hbWUiOiJKb2huIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiaXNfdmVyaWZpZWQiOnRydWUsImlhdCI6MTczMjI1NzQ3MCwiZXhwIjoxNzMyMzQzODcwfQ.bX0KgkSGkBq0YgYXflt4Lr11C5NuwmH70cgjCvi4bRg
+}
+
+body:json {
+  {
+    "name": "ServiceDesk Plus OP",
+    "description": "An ITIL ready service desk application that enables organizations to manage incidents, requests, changes, and assets effectively.",
+    "icon_url": "https://www.manageengine.com/products/service-desk/images/sdp-logo.png",
+    "api_endpoint_url": "https://demo.servicedeskplus.com/",
+    "api_key": "your-servicedesk-plus-api-keyssss",
+    "environment": "production",
+    "type": "private",
+    "collaborations": [
+      {
+        "email": "slakshman664@gmail.com",
+        "role": ["view", "add", "update", "delete"]
+      }
+    ]
+  }
+  
+}

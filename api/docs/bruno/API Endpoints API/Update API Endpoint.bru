@@ -1,0 +1,29 @@
+meta {
+  name: Update API Endpoint
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3000/api/v1/api_endpoints/6740cad3029f16f6dcd4e702
+  body: json
+  auth: none
+}
+
+headers {
+  authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2QxYWYwNTNjMGFmOWZkYWQ4ZGY2MyIsImZpcnN0X25hbWUiOiJKb2huIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiaXNfdmVyaWZpZWQiOnRydWUsImlhdCI6MTczMjI1NzQ3MCwiZXhwIjoxNzMyMzQzODcwfQ.bX0KgkSGkBq0YgYXflt4Lr11C5NuwmH70cgjCvi4bRg
+}
+
+body:json {
+  {
+      "application_id": "674044047fd750a15c91ae81", // ObjectId of the Application document
+      "route": "/userss",
+      "method": "GET",
+      "input_data": "{\"page\": 1, \"limit\": 10}",
+      "input_data_mapping": "{\"user_id\": \"userId\"}",
+      "headers": "{\"Authorization\": \"Bearer some-token-value\"}",
+      "description": "Fetch a list of users with pagination support.",
+      "auth_type": "Bearer"
+  }
+  
+}

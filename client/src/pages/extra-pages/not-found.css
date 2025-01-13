@@ -1,0 +1,62 @@
+/* Full-screen background gradient and styling */
+.not-found-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* The Result Card container */
+.result-card {
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* The '404' Title styling */
+.title-text {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ff6f61;
+    margin-top: 20px;
+}
+
+/* The sad face icon */
+.icon-sad {
+    font-size: 80px;
+    color: #ff6f61;
+    animation: bounce 1.5s infinite;
+}
+
+/* Animation for button */
+.go-home-btn {
+    margin-top: 20px;
+    font-size: 18px;
+    padding: 12px 28px;
+    background-color: #ff6f61;
+    border-color: #ff6f61;
+    border-radius: 30px;
+    transition: transform 0.3s ease;
+}
+
+.go-home-btn:hover {
+    background-color: #e55b4f;
+    border-color: #e55b4f;
+    transform: translateY(-5px);
+}
+
+/* Bounce effect for the sad face icon */
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

@@ -1,0 +1,36 @@
+meta {
+  name: Update a specific billing information by ID
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3000/api/v1/billing-info/:id
+  body: json
+  auth: none
+}
+
+params:path {
+  id: 673cfe7fc924ad7fff830f35
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzNjNDQ3MGRmNTRmNWQ3YTkwNGQ0MDciLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzIwNTMzNzEsImV4cCI6MTczMjA1Njk3MX0.DoNAWe4bd9RZaF6eN4cgkwljHn4GurYrp2t9MASxEwM
+}
+
+body:json {
+  {
+    "payment_method": "credit_card_new",
+    "card_last_four": "1234",
+    "billing_address": "123 Main St, Boston, MA",
+    "subscription_id": "64f5cb7e3f8e4a2a9c4e9b1b",
+    "subscription_start_date": "2024-01-01",
+    "subscription_end_date": "2025-01-01T00:00:00.000Z",
+    "amount": 89.99,
+    "currency": "USD",
+    "payment_status": "paid",
+    "payment_method_token": "tok_visa_123456789",
+    "transaction_history": "txn_001, txn_002, txn_003",
+    "last_billed_at": "2024-10-01T00:00:00.000Z"
+  }
+}

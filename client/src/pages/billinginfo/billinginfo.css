@@ -1,0 +1,240 @@
+.card-credit {
+    background-image: url("../../assets/images/info-card-3.jpg");
+    background-position: 50%;
+    background-size: cover;
+    border: none;
+}
+
+.card-credit * {
+    color: #fff;
+}
+
+.card-credit .card-number {
+    word-spacing: 10px;
+    font-weight: 600;
+    margin-bottom: 45px;
+    font-size: 20px;
+}
+
+.card-credit .ant-card-body {
+    padding-top: 15px;
+}
+.card-credit .card-footer {
+    display: flex;
+    align-items: flex-end;
+}
+
+.card-credit .card-footer h6,
+.card-credit .card-footer p {
+    margin-bottom: 0;
+}
+.card-credit .col-logo img {
+    max-width: 50px;
+}
+.card-credit .card-footer h6 {
+    font-weight: 700;
+}
+
+.ant-card-body {
+    padding: 16px;
+}
+
+.ant-card-head-title p {
+    font-weight: 600;
+    color: #8c8c8c;
+    margin-bottom: 0;
+  }
+  
+  .ant-card-head-title h6 {
+    margin-bottom: 0;
+  }
+  
+  .card-project.ant-card {
+    box-shadow: none;
+    border: none;
+  }
+  
+  .card-project.ant-card .ant-card-cover img {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 12%);
+  }
+  
+  .card-project.ant-card .card-tag,
+  .card-project.ant-card p {
+    font-weight: 600;
+    color: #8c8c8c;
+    margin-bottom: 5px;
+  }
+  .card-project.ant-card h5 {
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .card-project.ant-card .card-tag,
+  .card-project.ant-card p {
+    font-weight: 600;
+    color: #8c8c8c;
+    margin-bottom: 5px;
+  }
+  .card-project.ant-card p {
+    margin-bottom: 0;
+  }
+  .card-project.ant-card .ant-card-body {
+    padding: 16px 0 0;
+  }
+  
+  .card-project.ant-card .card-footer {
+    margin-top: 22px;
+  }
+
+  .payment-method-card.ant-card {
+    box-shadow: none;
+    word-spacing: 10px;
+  }
+  
+  .payment-method-card.ant-card img {
+    width: 40px;
+  }
+  .payment-method-card.ant-card .ant-card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .payment-method-card.ant-card .ant-btn {
+    margin-right: -20px;
+  }
+
+  .payment-method-card.ant-card h6 {
+    font-weight: 600;
+    margin-bottom: 0;
+    color: #141414;
+  }
+
+  .payment-method-card.ant-card .ant-btn {
+    margin-right: -20px;
+  }
+
+  .ant-card.ant-card-bordered.payment-method-card .ant-card-body {
+    padding-top: 16px;
+  }
+
+  .ant-invoice-card .ant-card-body {
+    padding-top: 0px;
+  }
+
+
+  .invoice-list .ant-list-item,
+  .transactions-list .ant-list-item {
+    padding: 11px 0;
+    border-bottom: 0;
+  }
+  .invoice-list .ant-list-item-meta-title,
+  .transactions-list .ant-list-item-meta-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #141414;
+  }
+  
+  .invoice-list .ant-list-item-meta-description,
+  .transactions-list .ant-list-item-meta-description {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8c8c8c;
+  }
+  
+  .invoice-list .ant-list-item-action .ant-btn,
+  .transactions-list .ant-list-item-action .ant-btn {
+    font-weight: 600;
+    color: #141414;
+    box-shadow: none;
+  }
+  
+  .ant-btn > svg,
+  .ant-btn > svg + span {
+    vertical-align: middle;
+  }
+  .invoice-list .amount,
+  .transactions-list .amount {
+    font-size: 14px;
+    font-weight: 600;
+    color: #8c8c8c;
+  }
+
+  .card-billing-info.ant-card {
+    box-shadow: none;
+    background-color: #fafafa;
+    border: 1px solid #f5f5f5;
+  }
+
+  .card-billing-info.ant-card .darkbtn {
+    color: #8c8c8c;
+  }
+  
+  .col-action {
+    display: flex;
+  }
+  
+  .card-billing-info .col-action button {
+    height: 34px;
+    font-size: 12px;
+    padding: 0 15px;
+    box-shadow: none;
+  }
+
+  .card-billing-info.ant-card .ant-descriptions-header {
+    margin-bottom: 0px;
+  }
+
+  @media (min-width: 992px) {
+    .card-billing-info.ant-card .ant-card-body {
+      display: flex;
+    }
+    .layout-dashboard-rtl {
+      overflow: auto;
+    }
+    .layout-dashboard-rtl .ant-layout-sider.sider-primary {
+      margin: 20px 20px 0 0;
+      height: calc(100vh - 20px);
+    }
+    .layout-dashboard-rtl .ant-layout-sider.sider-primary {
+      right: 0;
+      left: auto;
+    }
+    .layout-dashboard-rtl .ant-layout-sider.sider-primary {
+      right: 0;
+      left: auto;
+    }
+    .layout-dashboard-rtl .ant-layout {
+      margin-right: 270px;
+      margin-left: 0;
+    }
+    .layout-dashboard-rtl .ant-layout-footer {
+      margin: 0 20px 20px 0;
+    }
+  }
+
+  .card-header-date {
+    margin-bottom: 0;
+    font-weight: 700;
+    color: #8c8c8c;
+  }
+  
+  .card-header-date > * {
+    vertical-align: middle;
+  }
+  .card-header-date svg {
+    margin-right: 5px;
+  }
+
+  .transactions-list .amount {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+    
+  .transactions-list .ant-list-item-meta {
+    align-items: center;
+  }
+
+  .ant-list.ant-list-split.transactions-list.ant-newest .ant-list-header {
+    padding-top: 0px;
+  }

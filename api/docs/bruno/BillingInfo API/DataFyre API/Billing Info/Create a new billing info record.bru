@@ -1,0 +1,34 @@
+meta {
+  name: Create a new billing info record
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/api/v1/billing-info
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2QxYWYwNTNjMGFmOWZkYWQ4ZGY2MyIsImZpcnN0X25hbWUiOiJKb2huIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiaXNfdmVyaWZpZWQiOnRydWUsImlhdCI6MTczMzYwMTE0MSwiZXhwIjoxNzMzNjg3NTQxfQ.DeYdOs2wGwEFv37RbJxKp2U1NyNxTdZpU8G5BRH6Ghk
+}
+
+body:json {
+  {
+    "payment_method": "Debit_card_2",
+    "card_last_four": "1234",
+    "billing_address": "12345 Main St, Springfield, IL",
+    "card_type": "Master Card",
+    "exp_date": "12/27",
+    "subscription_id": "64f5cb7e3f8e4a2a9c4e9b1b",
+    "subscription_start_date": "2024-01-01",
+    "subscription_end_date": "2025-01-01T00:00:00.000Z",
+    "amount": 199.99,
+    "currency": "USD",
+    "payment_status": "paid",
+    "payment_method_token": "tok_visa_123456789",
+    "transaction_history": "txn_001, txn_002, txn_003",
+    "last_billed_at": "2024-10-01T00:00:00.000Z"
+  }
+}

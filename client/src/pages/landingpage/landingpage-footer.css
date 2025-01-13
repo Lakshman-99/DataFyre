@@ -1,0 +1,23 @@
+.footer-flex{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 50px;
+}
+
+.footer{
+    height: 443px;
+    top: 0px;
+    position: relative;
+}
+
+
+.footer-box-features{
+    padding : 30px;
+    color: white;
+    height: 285px;
+    width: 355px;
+}
